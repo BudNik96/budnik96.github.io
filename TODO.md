@@ -3,12 +3,10 @@
 Preview: `python -m http.server 8765` in this folder, then http://127.0.0.1:8765
 
 ## Needs Nikita
-- Tagline (hero), 2-3 bio lines (About), email, YouTube + Instagram links.
-- Bad Omens: song title; confirm "unofficial fan music video" wording; YouTube link after the release.
-- Helgnar dragon cinematic: your role line (direction / camera / lighting / edit?). The site embeds YouTube 9kDAbI6SV2Y ("Duel of the Dragon Riders") - confirm it is the right video.
+- Bad Omens (Artificial Suicide, fan music video): YouTube link after the release.
+- Helgnar dragon cinematic (role: direction, cameras, story - animation was provided). The site embeds YouTube 9kDAbI6SV2Y ("Duel of the Dragon Riders") - confirm it is the right video.
 - Alligatorz (BraAus) job videos are private on Drive - share the two REDO files or copy them into `_source/`.
 - Character animation card titles/clients (current names are guesses).
-- YouTube + Instagram links in Contact are still `href="#"`.
 - Custom domain? If yes, replace `https://budnik96.github.io/portfolio-website/` in index.html (canonical, og:url, og:image), sitemap.xml, robots.txt, and `/portfolio-website/` in 404.html.
 
 ## Unused videos found in D:\MotionDesign (candidates - pick what to show)
