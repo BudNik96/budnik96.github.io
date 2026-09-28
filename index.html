@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nikita Budnevich — Motion Designer, Video Editor, 3D Artist</title>
+<meta name="description" content="Nikita Budnevich: motion designer, video editor and 3D artist. Music videos, real-time cinematics, 3D.">
+<meta property="og:title" content="Nikita Budnevich — Motion Designer, Video Editor, 3D Artist">
+<meta property="og:image" content="assets/img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="logo" href="#top">NIKITA BUDNEVICH</a>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#animation">Animation</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <video class="hero-video" src="assets/video/hero_loop.mp4" poster="assets/img/bo_0420.jpg" autoplay muted loop playsinline></video>
+  <div class="hero-shade"></div>
+  <div class="hero-text">
+    <p class="eyebrow">Motion designer · Video editor · 3D artist</p>
+    <h1>Nikita Budnevich</h1>
+    <p class="lead">I build cinematic worlds in real time. [One line about what you do best.]</p>
+    <a class="btn" href="#work">See the work</a>
+  </div>
+</section>
+
+<section class="featured" id="work">
+  <div class="featured-head">
+    <p class="eyebrow">Featured · Music video</p>
+    <h2>Bad Omens — [Song title]</h2>
+    <p class="meta">Unofficial fan music video · Unreal Engine 5 · 2026 · Direction, camera, lighting, animation, edit</p>
+  </div>
+
+  <div class="player">
+    <!-- Replace with the YouTube embed after the release:
+         <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Bad Omens music video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe> -->
+    <img src="assets/img/bo_1950.jpg" alt="Final chorus: fire cannons over the Times Square crowd">
+    <span class="soon">Premiere soon</span>
+  </div>
+
+  <p class="story">A night concert in Times Square, built and shot entirely inside Unreal Engine: a city fly-in, thousands of animated fans,
+    a stage light show cued to the song, and a hand-painted AI finishing pass. [Two or three lines in your own words about the idea.]</p>
+
+  <div class="gallery">
+    <img src="assets/img/bo_0420.jpg" alt="Times Square crowd, wide aerial" loading="lazy">
+    <img src="assets/img/bo_1002.jpg" alt="The band on stage in red light" loading="lazy">
+    <img src="assets/img/bo_0900.jpg" alt="Singer close-up with motion blur" loading="lazy">
+    <img src="assets/img/bo_1560.jpg" alt="Blue light wash over the stage" loading="lazy">
+    <img src="assets/img/bo_0560.jpg" alt="Masked guitarist" loading="lazy">
+    <img src="assets/img/bo_1800.jpg" alt="The crowd singing along" loading="lazy">
+  </div>
+
+  <div class="compare">
+    <figure><img src="assets/img/bo_1002.jpg" alt="Unreal render" loading="lazy"><figcaption>Unreal render</figcaption></figure>
+    <figure><img src="assets/img/bo_ai_1002.jpg" alt="Same frame after the painted AI pass" loading="lazy"><figcaption>Painted AI pass</figcaption></figure>
+  </div>
+</section>
+
+<section class="featured dragon">
+  <div class="featured-head">
+    <p class="eyebrow">Featured · Game cinematic</p>
+    <h2>Helgnar The Conqueror — Duel of the Dragon Riders</h2>
+    <p class="meta">Cinematic for Helgnar The Conqueror · Unreal Engine 5 · 2025 · [Your role: e.g. cinematic direction, camera, lighting, edit]</p>
+  </div>
+  <div class="player" id="dragon-player">
+    <video src="assets/video/dragon_loop.mp4" poster="assets/img/dragon_0.58.jpg" autoplay muted loop playsinline></video>
+    <button class="watch" data-embed="https://www.youtube-nocookie.com/embed/9kDAbI6SV2Y">▶ Watch the cinematic</button>
+  </div>
+  <div class="gallery">
+    <img src="assets/img/dragon_0.08.jpg" alt="A red dragon lands on a misty beach" loading="lazy">
+    <img src="assets/img/dragon_0.48.jpg" alt="The masked dragon rider" loading="lazy">
+    <img src="assets/img/dragon_0.78.jpg" alt="Two dragons clash in the fog" loading="lazy">
+  </div>
+</section>
+
+<section class="more">
+  <h2>More work</h2>
+  <div class="cards" id="cards"></div>
+  <p class="coming">Coming soon: Infomens showreel · Making of Bad Omens</p>
+</section>
+
+<section class="anim" id="animation">
+  <h2>Character animation</h2>
+  <p class="sub">Hover to preview, click to watch.</p>
+  <div class="anim-grid" id="anim"></div>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <p class="eyebrow">About</p>
+    <h2>Hi, I'm Nikita.</h2>
+    <p>[Two or three lines: who you are, where you're based, what you love making.] I work across motion design, real-time 3D in Unreal Engine,
+      Blender and DaVinci Resolve, from the first idea to the final grade.</p>
+    <p>Based in Petah Tikva, Israel. Available for freelance and full-time work.</p>
+  </div>
+  <ul class="skills">
+    <li>Unreal Engine 5</li><li>Motion design</li><li>Cinematography</li><li>Blender</li><li>DaVinci Resolve</li><li>AI stylization (ComfyUI)</li>
+  </ul>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Let's make something loud.</h2>
+  <a class="mail" href="mailto:[your@email]">[your@email]</a>
+  <div class="socials">
+    <a href="#">YouTube</a><a href="#">Instagram</a><a href="https://www.behance.net/BudnevichNikita" target="_blank" rel="noopener">Behance</a><a href="https://www.linkedin.com/in/budnevich/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<footer>© 2026 Nikita Budnevich</footer>
+<div class="lightbox" id="lb" hidden><button class="lb-close" aria-label="Close">×</button><div class="lb-frame"><iframe id="lbf" title="Video player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><video id="lbv" controls playsinline hidden></video></div></div>
+<script src="work.js"></script>
+</body>
+</html>
