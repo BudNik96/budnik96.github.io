@@ -2,21 +2,39 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nikita Budnevich — Motion Designer, Video Editor, 3D Artist</title>
-<meta name="description" content="Nikita Budnevich: motion designer, video editor and 3D artist. Music videos, real-time cinematics, 3D.">
+<meta name="description" content="Nikita Budnevich: motion designer, video editor and 3D artist. Music videos, real-time Unreal Engine cinematics, 3D and character animation.">
+<meta name="theme-color" content="#0e0e13">
+<meta name="color-scheme" content="dark">
+<!-- Site URL: GitHub Pages address of this repo. Change here, in sitemap.xml and robots.txt if you move to your own domain. -->
+<link rel="canonical" href="https://budnik96.github.io/portfolio-website/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nikita Budnevich">
 <meta property="og:title" content="Nikita Budnevich — Motion Designer, Video Editor, 3D Artist">
-<meta property="og:image" content="assets/img/og.jpg">
+<meta property="og:description" content="Music videos, real-time Unreal Engine cinematics, 3D and character animation.">
+<meta property="og:url" content="https://budnik96.github.io/portfolio-website/">
+<meta property="og:image" content="https://budnik96.github.io/portfolio-website/assets/img/og-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A night concert in Times Square rendered in Unreal Engine, with the NB monogram">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+<a class="skip" href="#work">Skip to content</a>
 
-<header class="nav">
-  <a class="logo" href="#top">NIKITA BUDNEVICH</a>
-  <nav>
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Nikita Budnevich, back to top">NIKITA BUDNEVICH</a>
+  <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><span class="menu-icon" aria-hidden="true"></span>Menu</button>
+  <nav id="menu" aria-label="Main">
     <a href="#work">Work</a>
     <a href="#animation">Animation</a>
     <a href="#about">About</a>
@@ -24,8 +42,9 @@
   </nav>
 </header>
 
+<main>
 <section class="hero" id="top">
-  <video class="hero-video" src="assets/video/hero_loop.mp4" poster="assets/img/bo_0420.jpg" autoplay muted loop playsinline></video>
+  <video class="hero-video loop-video" src="assets/video/hero_loop.mp4" poster="assets/img/bo_0420.jpg" muted loop playsinline preload="auto" aria-hidden="true"></video>
   <div class="hero-shade"></div>
   <div class="hero-text">
     <p class="eyebrow">Motion designer · Video editor · 3D artist</p>
@@ -33,6 +52,7 @@
     <p class="lead">I build cinematic worlds in real time. [One line about what you do best.]</p>
     <a class="btn" href="#work">See the work</a>
   </div>
+  <button class="loop-toggle" data-for=".hero-video" type="button">Pause loop</button>
 </section>
 
 <section class="featured" id="work">
@@ -44,8 +64,8 @@
 
   <div class="player">
     <!-- Replace with the YouTube embed after the release:
-         <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Bad Omens music video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe> -->
-    <img src="assets/img/bo_1950.jpg" alt="Final chorus: fire cannons over the Times Square crowd">
+         <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Bad Omens music video" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe> -->
+    <img src="assets/img/bo_1950.jpg" width="1440" height="602" loading="lazy" decoding="async" alt="Final chorus: fire cannons over the Times Square crowd">
     <span class="soon">Premiere soon</span>
   </div>
 
@@ -53,17 +73,17 @@
     a stage light show cued to the song, and a hand-painted AI finishing pass. [Two or three lines in your own words about the idea.]</p>
 
   <div class="gallery">
-    <img src="assets/img/bo_0420.jpg" alt="Times Square crowd, wide aerial" loading="lazy">
-    <img src="assets/img/bo_1002.jpg" alt="The band on stage in red light" loading="lazy">
-    <img src="assets/img/bo_0900.jpg" alt="Singer close-up with motion blur" loading="lazy">
-    <img src="assets/img/bo_1560.jpg" alt="Blue light wash over the stage" loading="lazy">
-    <img src="assets/img/bo_0560.jpg" alt="Masked guitarist" loading="lazy">
-    <img src="assets/img/bo_1800.jpg" alt="The crowd singing along" loading="lazy">
+    <img src="assets/img/sm/bo_0420.jpg" srcset="assets/img/sm/bo_0420.jpg 720w, assets/img/bo_0420.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="Times Square crowd, wide aerial">
+    <img src="assets/img/sm/bo_1002.jpg" srcset="assets/img/sm/bo_1002.jpg 720w, assets/img/bo_1002.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="The band on stage in red light">
+    <img src="assets/img/sm/bo_0900.jpg" srcset="assets/img/sm/bo_0900.jpg 720w, assets/img/bo_0900.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="Singer close-up with motion blur">
+    <img src="assets/img/sm/bo_1560.jpg" srcset="assets/img/sm/bo_1560.jpg 720w, assets/img/bo_1560.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="Blue light wash over the stage">
+    <img src="assets/img/sm/bo_0560.jpg" srcset="assets/img/sm/bo_0560.jpg 720w, assets/img/bo_0560.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="Masked guitarist">
+    <img src="assets/img/sm/bo_1800.jpg" srcset="assets/img/sm/bo_1800.jpg 720w, assets/img/bo_1800.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="The crowd singing along">
   </div>
 
   <div class="compare">
-    <figure><img src="assets/img/bo_1002.jpg" alt="Unreal render" loading="lazy"><figcaption>Unreal render</figcaption></figure>
-    <figure><img src="assets/img/bo_ai_1002.jpg" alt="Same frame after the painted AI pass" loading="lazy"><figcaption>Painted AI pass</figcaption></figure>
+    <figure><img src="assets/img/sm/bo_1002.jpg" srcset="assets/img/sm/bo_1002.jpg 720w, assets/img/bo_1002.jpg 1440w" sizes="(max-width: 800px) 100vw, 50vw" width="720" height="301" loading="lazy" decoding="async" alt="Stage frame straight out of Unreal Engine"><figcaption>Unreal render</figcaption></figure>
+    <figure><img src="assets/img/sm/bo_ai_1002.jpg" srcset="assets/img/sm/bo_ai_1002.jpg 720w, assets/img/bo_ai_1002.jpg 1568w" sizes="(max-width: 800px) 100vw, 50vw" width="720" height="309" loading="lazy" decoding="async" alt="Same frame after the painted AI pass"><figcaption>Painted AI pass</figcaption></figure>
   </div>
 </section>
 
@@ -74,13 +94,15 @@
     <p class="meta">Cinematic for Helgnar The Conqueror · Unreal Engine 5 · 2025 · [Your role: e.g. cinematic direction, camera, lighting, edit]</p>
   </div>
   <div class="player" id="dragon-player">
-    <video src="assets/video/dragon_loop.mp4" poster="assets/img/dragon_0.58.jpg" autoplay muted loop playsinline></video>
-    <button class="watch" data-embed="https://www.youtube-nocookie.com/embed/9kDAbI6SV2Y">▶ Watch the cinematic</button>
+    <!-- Loop and poster load when the player scrolls near (work.js). -->
+    <video class="loop-video lazy-video" data-src="assets/video/dragon_loop.mp4" data-poster="assets/img/dragon_0.58.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <button class="watch" data-embed="https://www.youtube-nocookie.com/embed/9kDAbI6SV2Y" aria-haspopup="dialog"><span aria-hidden="true">▶ </span>Watch the cinematic</button>
+    <button class="loop-toggle" data-for="#dragon-player video" type="button">Pause loop</button>
   </div>
   <div class="gallery">
-    <img src="assets/img/dragon_0.08.jpg" alt="A red dragon lands on a misty beach" loading="lazy">
-    <img src="assets/img/dragon_0.48.jpg" alt="The masked dragon rider" loading="lazy">
-    <img src="assets/img/dragon_0.78.jpg" alt="Two dragons clash in the fog" loading="lazy">
+    <img src="assets/img/sm/dragon_0.08.jpg" srcset="assets/img/sm/dragon_0.08.jpg 720w, assets/img/dragon_0.08.jpg 1600w" sizes="(max-width: 640px) 50vw, 33vw" width="720" height="405" loading="lazy" decoding="async" alt="A red dragon lands on a misty beach">
+    <img src="assets/img/sm/dragon_0.48.jpg" srcset="assets/img/sm/dragon_0.48.jpg 720w, assets/img/dragon_0.48.jpg 1600w" sizes="(max-width: 640px) 50vw, 33vw" width="720" height="405" loading="lazy" decoding="async" alt="The masked dragon rider">
+    <img src="assets/img/sm/dragon_0.78.jpg" srcset="assets/img/sm/dragon_0.78.jpg 720w, assets/img/dragon_0.78.jpg 1600w" sizes="(max-width: 640px) 100vw, 33vw" width="720" height="405" loading="lazy" decoding="async" alt="Two dragons clash in the fog">
   </div>
 </section>
 
@@ -92,7 +114,7 @@
 
 <section class="anim" id="animation">
   <h2>Character animation</h2>
-  <p class="sub">Hover to preview, click to watch.</p>
+  <p class="sub"><span class="hover-hint">Hover to preview, click to watch.</span><span class="touch-hint">Tap to watch.</span></p>
   <div class="anim-grid" id="anim"></div>
 </section>
 
@@ -104,7 +126,7 @@
       Blender and DaVinci Resolve, from the first idea to the final grade.</p>
     <p>Based in Petah Tikva, Israel. Available for freelance and full-time work.</p>
   </div>
-  <ul class="skills">
+  <ul class="skills" aria-label="Tools and skills">
     <li>Unreal Engine 5</li><li>Motion design</li><li>Cinematography</li><li>Blender</li><li>DaVinci Resolve</li><li>AI stylization (ComfyUI)</li>
   </ul>
 </section>
@@ -113,12 +135,17 @@
   <h2>Let's make something loud.</h2>
   <a class="mail" href="mailto:[your@email]">[your@email]</a>
   <div class="socials">
-    <a href="#">YouTube</a><a href="#">Instagram</a><a href="https://www.behance.net/BudnevichNikita" target="_blank" rel="noopener">Behance</a><a href="https://www.linkedin.com/in/budnevich/" target="_blank" rel="noopener">LinkedIn</a>
+    <!-- [YouTube URL] and [Instagram URL] still needed -->
+    <a href="#">YouTube</a><a href="#">Instagram</a><a href="https://www.behance.net/BudnevichNikita" target="_blank" rel="noopener">Behance<span class="sr-only"> (opens in a new tab)</span></a><a href="https://www.linkedin.com/in/budnevich/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
   </div>
 </section>
+</main>
 
 <footer>© 2026 Nikita Budnevich</footer>
-<div class="lightbox" id="lb" hidden><button class="lb-close" aria-label="Close">×</button><div class="lb-frame"><iframe id="lbf" title="Video player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><video id="lbv" controls playsinline hidden></video></div></div>
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <button class="lb-close" aria-label="Close video">×</button>
+  <div class="lb-frame"><iframe id="lbf" title="Video player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><video id="lbv" controls playsinline hidden></video></div>
+</div>
 <script src="work.js"></script>
 </body>
 </html>

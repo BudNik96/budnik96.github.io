@@ -26,54 +26,150 @@ const WORK = [
     embed: 'https://player.vimeo.com/video/583292668', link: 'https://www.behance.net/gallery/124801599/My-Kaino-School-Course' },
 ];
 
-const cards = document.getElementById('cards');
+
+// Character animation (weakest pieces last): muted loop on hover, 720p version with sound in the lightbox.
+const ANIM = [
+  ['toilet', 'Skibidi toilet'], ['skibidi_block', 'Skibidi blocking'], ['skibidi_test', 'Skibidi test'],
+  ['skel_walk', 'Skeleton walk cycle'], ['skel_attack', 'Skeleton attack'], ['flykick', 'Flying kick'],
+  ['zombie', 'Zombie'], ['babka', 'Evil Granny'], ['tung', 'Espresso Ballerina'],
+];
+
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const canHover = matchMedia('(hover: hover)').matches;
+const onScreen = (els, cb, margin = '0px') => {
+  if (!('IntersectionObserver' in window)) return els.forEach(el => cb(el, true));
+  const io = new IntersectionObserver(es => es.forEach(e => cb(e.target, e.isIntersecting, io)), { rootMargin: margin });
+  els.forEach(el => io.observe(el));
+};
+
+// ---- Lightbox (video player dialog) ----
 const lb = document.getElementById('lb');
 const lbf = document.getElementById('lbf');
+const lbv = document.getElementById('lbv');
+const lbClose = lb.querySelector('.lb-close');
+let lbReturnFocus = null;
 
+function openLb({ embed, video }) {
+  lbReturnFocus = document.activeElement;
+  if (embed) {
+    lbv.hidden = true; lbf.hidden = false;
+    lbf.src = embed + (embed.includes('?') ? '&' : '?') + 'autoplay=1';
+  } else {
+    lbf.hidden = true; lbv.hidden = false;
+    lbv.src = video; lbv.play().catch(() => {});
+  }
+  lb.hidden = false;
+  document.body.classList.add('lb-open');
+  lbClose.focus();
+}
+function closeLb() {
+  if (lb.hidden) return;
+  lb.hidden = true; lbf.src = ''; lbv.pause(); lbv.removeAttribute('src'); lbv.load(); lbv.hidden = true; lbf.hidden = false;
+  document.body.classList.remove('lb-open');
+  if (lbReturnFocus) lbReturnFocus.focus();
+}
+lb.addEventListener('click', e => { if (e.target === lb || e.target === lbClose) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (lb.hidden) return;
+  if (e.key === 'Escape') { e.preventDefault(); closeLb(); }
+  if (e.key === 'Tab') { // keep focus inside the dialog: close button <-> player
+    const player = lbv.hidden ? lbf : lbv;
+    const target = document.activeElement === lbClose ? player : lbClose;
+    e.preventDefault(); target.focus();
+  }
+});
+
+// ---- More work (Behance) ----
+const cards = document.getElementById('cards');
 WORK.forEach(w => {
   const a = document.createElement('a');
   a.className = 'card';
   a.href = w.link;
   a.target = '_blank';
   a.rel = 'noopener';
-  a.innerHTML = `<div class="thumb"><img src="${w.img}" alt="${w.t}" loading="lazy">${w.embed ? '<span class="play">▶</span>' : ''}</div>
-    <h3>${w.t}</h3><p>${w.tag}</p>`;
-  if (w.embed) a.addEventListener('click', e => {
-    e.preventDefault();
-    lbf.src = w.embed + (w.embed.includes('?') ? '&' : '?') + 'autoplay=1';
-    lb.hidden = false;
-  });
+  if (w.embed) a.setAttribute('aria-haspopup', 'dialog');
+  // Cover is decorative: the card's accessible name comes from the title below it.
+  a.innerHTML = `<div class="thumb"><img src="${w.img}" alt="" width="808" height="455" loading="lazy" decoding="async">${w.embed ? '<span class="play" aria-hidden="true">▶</span>' : ''}</div>
+    <h3>${w.t}</h3><p>${w.tag}${w.embed ? '' : '<span class="sr-only"> (opens Behance in a new tab)</span>'}</p>`;
+  if (w.embed) a.addEventListener('click', e => { e.preventDefault(); openLb({ embed: w.embed }); });
   cards.appendChild(a);
 });
 
-// Character animation: muted loop on hover, 720p version with sound in the lightbox.
-const ANIM = [
-  ['toilet', 'Skibidi toilet'], ['skibidi_block', 'Skibidi blocking'], ['skibidi_test', 'Skibidi test'],
-  ['skel_walk', 'Skeleton walk cycle'], ['skel_attack', 'Skeleton attack'], ['flykick', 'Flying kick'],
-  ['zombie', 'Zombie'], ['babka', 'Evil Granny'], ['tung', 'Espresso Ballerina'],
-];
-const lbv = document.getElementById('lbv');
+// ---- Character animation ----
 const animGrid = document.getElementById('anim');
 ANIM.forEach(([k, t]) => {
-  const d = document.createElement('div');
+  const d = document.createElement('button');
   d.className = 'anim-card';
-  d.innerHTML = `<div class="thumb"><img src="assets/anim/${k}.jpg" alt="${t}" loading="lazy">
-    <video src="assets/anim/${k}_loop.mp4" muted loop playsinline preload="none"></video><span class="play">▶</span></div><h3>${t}</h3>`;
+  d.type = 'button';
+  d.setAttribute('aria-haspopup', 'dialog');
+  d.innerHTML = `<span class="thumb"><img src="assets/anim/${k}.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
+    <video muted loop playsinline preload="none" aria-hidden="true"></video><span class="play" aria-hidden="true">▶</span></span><span class="anim-title">${t}</span>`;
   const v = d.querySelector('video');
-  d.addEventListener('mouseenter', () => { v.play().catch(() => {}); });
-  d.addEventListener('mouseleave', () => { v.pause(); });
-  d.addEventListener('click', () => {
-    lbf.hidden = true; lbv.hidden = false;
-    lbv.src = `assets/anim/${k}_720.mp4`; lb.hidden = false; lbv.play().catch(() => {});
-  });
+  const preview = on => {
+    if (on && reduceMotion.matches) return;
+    if (on) { if (!v.src) v.src = `assets/anim/${k}_loop.mp4`; v.play().then(() => d.classList.add('playing')).catch(() => {}); }
+    else { v.pause(); d.classList.remove('playing'); }
+  };
+  if (canHover) {
+    d.addEventListener('mouseenter', () => preview(true));
+    d.addEventListener('mouseleave', () => preview(false));
+  }
+  d.addEventListener('focus', () => { if (d.matches(':focus-visible')) preview(true); });
+  d.addEventListener('blur', () => preview(false));
+  d.addEventListener('click', () => { preview(false); openLb({ video: `assets/anim/${k}_720.mp4` }); });
   animGrid.appendChild(d);
 });
 
-document.querySelectorAll('.watch').forEach(b => b.addEventListener('click', () => {
-  lbv.hidden = true; lbf.hidden = false;
-  lbf.src = b.dataset.embed + '?autoplay=1'; lb.hidden = false;
-}));
+document.querySelectorAll('.watch').forEach(b => b.addEventListener('click', () => openLb({ embed: b.dataset.embed })));
 
-function closeLb() { lb.hidden = true; lbf.src = ''; lbv.pause(); lbv.removeAttribute('src'); lbv.hidden = true; lbf.hidden = false; }
-lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb-close')) closeLb(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+// ---- Background loops: lazy-load, play only while visible, respect reduced motion, pause button ----
+const loops = [...document.querySelectorAll('.loop-video')];
+loops.forEach(v => { v.userPaused = reduceMotion.matches; });
+document.querySelectorAll('.loop-toggle').forEach(btn => {
+  const v = document.querySelector(btn.dataset.for);
+  v.toggleBtn = btn;
+  btn.addEventListener('click', () => { v.userPaused = !v.userPaused; syncLoop(v); });
+});
+function syncLoop(v) {
+  const play = v.visible && !v.userPaused;
+  if (play) {
+    if (v.dataset.src && !v.src) v.src = v.dataset.src;
+    v.play().catch(() => {});
+  } else v.pause();
+  if (v.toggleBtn) {
+    v.toggleBtn.textContent = v.userPaused ? 'Play loop' : 'Pause loop';
+  }
+}
+// Posters for lazy loops load a bit before they scroll into view.
+onScreen(document.querySelectorAll('.lazy-video'), (v, seen, io) => {
+  if (seen) { v.poster = v.dataset.poster; io && io.unobserve(v); }
+}, '600px');
+onScreen(loops, (v, seen) => { v.visible = seen; syncLoop(v); });
+reduceMotion.addEventListener('change', () => loops.forEach(v => { v.userPaused = reduceMotion.matches; syncLoop(v); }));
+
+// ---- Nav: mobile menu, current section, shadow after scrolling ----
+const nav = document.getElementById('nav');
+const menuBtn = document.getElementById('menu-btn');
+const setMenu = open => { nav.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); };
+menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+nav.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
+
+const navLinks = [...nav.querySelectorAll('nav a')];
+onScreen([document.getElementById('top'), ...navLinks.map(a => document.querySelector(a.hash))], (sec, seen) => {
+  if (!seen) return;
+  navLinks.forEach(a => a.toggleAttribute('aria-current', a.hash === '#' + sec.id));
+}, '-45% 0px -50% 0px');
+const onScroll = () => nav.classList.toggle('scrolled', scrollY > 40);
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+// ---- Fade-in on scroll (skipped entirely when reduced motion is on) ----
+if (!reduceMotion.matches && 'IntersectionObserver' in window) {
+  const els = document.querySelectorAll('main section:not(.hero) h2, .featured-head, .player, .story, .gallery, .compare, .card, .coming, .sub, .anim-card, .about > *, .contact > *');
+  els.forEach(el => {
+    el.classList.add('reveal');
+    const sibs = el.parentElement.children, i = [...sibs].indexOf(el);
+    if (el.matches('.card, .anim-card')) el.style.transitionDelay = (i % 3) * 80 + 'ms';
+  });
+  onScreen([...els], (el, seen, io) => { if (seen) { el.classList.add('in'); io.unobserve(el); } }, '0px 0px -8% 0px');
+}
