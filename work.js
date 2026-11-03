@@ -34,6 +34,15 @@ const ANIM = [
   ['zombie', 'Zombie'], ['babka', 'Evil Granny'], ['tung', 'Espresso Ballerina'],
 ];
 
+// >>> YOUTUBE_ID: paste the Bad Omens YouTube video id here after the release (e.g. 'dQw4w9WgXcQ'). Empty = the self-hosted 720p file plays instead.
+const YOUTUBE_ID = '4AqKGE7j7L0';
+
+// Featured pieces (self-hosted 720p; Bad Omens switches to YouTube once YOUTUBE_ID is set).
+const FEATURED = {
+  badomens: { video: 'assets/video/badomens_720.mp4', poster: 'assets/img/bo_poster.jpg', yt: YOUTUBE_ID },
+  reel: { video: 'assets/video/reel_720.mp4', poster: 'assets/img/sm/reel_3.jpg', yt: '' },
+};
+
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const canHover = matchMedia('(hover: hover)').matches;
 const onScreen = (els, cb, margin = '0px') => {
@@ -49,14 +58,14 @@ const lbv = document.getElementById('lbv');
 const lbClose = lb.querySelector('.lb-close');
 let lbReturnFocus = null;
 
-function openLb({ embed, video }) {
+function openLb({ embed, video, poster }) {
   lbReturnFocus = document.activeElement;
   if (embed) {
     lbv.hidden = true; lbf.hidden = false;
     lbf.src = embed + (embed.includes('?') ? '&' : '?') + 'autoplay=1';
   } else {
     lbf.hidden = true; lbv.hidden = false;
-    lbv.src = video; lbv.play().catch(() => {});
+    lbv.poster = poster || ''; lbv.src = video; lbv.play().catch(() => {});
   }
   lb.hidden = false;
   document.body.classList.add('lb-open');
@@ -64,7 +73,7 @@ function openLb({ embed, video }) {
 }
 function closeLb() {
   if (lb.hidden) return;
-  lb.hidden = true; lbf.src = ''; lbv.pause(); lbv.removeAttribute('src'); lbv.load(); lbv.hidden = true; lbf.hidden = false;
+  lb.hidden = true; lbf.src = ''; lbv.pause(); lbv.removeAttribute('src'); lbv.removeAttribute('poster'); lbv.load(); lbv.hidden = true; lbf.hidden = false;
   document.body.classList.remove('lb-open');
   if (lbReturnFocus) lbReturnFocus.focus();
 }
@@ -120,6 +129,23 @@ ANIM.forEach(([k, t]) => {
   animGrid.appendChild(d);
 });
 
+// ---- Featured cards: muted hover preview, click opens the full video ----
+document.querySelectorAll('.feat-media').forEach(btn => {
+  const f = FEATURED[btn.dataset.key], v = btn.querySelector('.pv');
+  const preview = on => {
+    if (on && reduceMotion.matches) return;
+    if (on) { if (!v.src) v.src = v.dataset.src; v.play().then(() => btn.classList.add('playing')).catch(() => {}); }
+    else { v.pause(); btn.classList.remove('playing'); }
+  };
+  if (canHover) { btn.addEventListener('mouseenter', () => preview(true)); btn.addEventListener('mouseleave', () => preview(false)); }
+  btn.addEventListener('focus', () => { if (btn.matches(':focus-visible')) preview(true); });
+  btn.addEventListener('blur', () => preview(false));
+  btn.addEventListener('click', () => {
+    preview(false);
+    openLb(f.yt ? { embed: `https://www.youtube-nocookie.com/embed/${f.yt}` } : { video: f.video, poster: f.poster });
+  });
+});
+
 document.querySelectorAll('.watch').forEach(b => b.addEventListener('click', () => openLb({ embed: b.dataset.embed })));
 
 // ---- Background loops: lazy-load, play only while visible, respect reduced motion, pause button ----
@@ -165,7 +191,7 @@ addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
 // ---- Fade-in on scroll (skipped entirely when reduced motion is on) ----
 if (!reduceMotion.matches && 'IntersectionObserver' in window) {
-  const els = document.querySelectorAll('main section:not(.hero) h2, .featured-head, .player, .story, .gallery, .compare, .card, .coming, .sub, .anim-card, .about > *, .contact > *');
+  const els = document.querySelectorAll('main section:not(.hero) .sec-title, .feat, .dragon, .card, .sub, .anim-card, .about > *, .contact > *');
   els.forEach(el => {
     el.classList.add('reveal');
     const sibs = el.parentElement.children, i = [...sibs].indexOf(el);

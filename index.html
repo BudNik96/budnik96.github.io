@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nikita Budnevich — Motion Designer, Video Editor, 3D Artist</title>
-<meta name="description" content="Nikita Budnevich: motion designer, video editor and 3D artist. Music videos, real-time Unreal Engine cinematics, 3D and character animation.">
+<meta name="description" content="Nikita Budnevich: motion designer, video editor and 3D artist. Music videos, real-time Unreal Engine cinematics, broadcast graphics and character animation.">
 <meta name="theme-color" content="#0e0e13">
 <meta name="color-scheme" content="dark">
 <!-- Site URL: GitHub Pages address of this repo. Change here, in sitemap.xml and robots.txt if you move to your own domain. -->
@@ -12,12 +12,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nikita Budnevich">
 <meta property="og:title" content="Nikita Budnevich — Motion Designer, Video Editor, 3D Artist">
-<meta property="og:description" content="Music videos, real-time Unreal Engine cinematics, 3D and character animation.">
+<meta property="og:description" content="Music videos, real-time Unreal Engine cinematics, broadcast graphics and character animation.">
 <meta property="og:url" content="https://budnik96.github.io/portfolio-website/">
 <meta property="og:image" content="https://budnik96.github.io/portfolio-website/assets/img/og-1200x630.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A night concert in Times Square rendered in Unreal Engine, with the NB monogram">
+<meta property="og:image:alt" content="Bad Omens, Artificial Suicide: a singer in red light, rendered in Unreal Engine 5">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -35,29 +35,69 @@
   <a class="logo" href="#top" aria-label="Nikita Budnevich, back to top">NIKITA BUDNEVICH</a>
   <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><span class="menu-icon" aria-hidden="true"></span>Menu</button>
   <nav id="menu" aria-label="Main">
+    <a href="#featured">Featured</a>
     <a href="#about">About</a>
-    <a href="#work">Work</a>
+    <a href="#work">More work</a>
     <a href="#animation">Animation</a>
-    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Hire me</a>
   </nav>
 </header>
 
 <main>
 <section class="hero" id="top">
-  <video class="hero-video loop-video" src="assets/video/hero_loop.mp4" poster="assets/img/bo_0420.jpg" muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <video class="hero-video loop-video" src="assets/video/hero_loop.mp4" poster="assets/img/bo_1450.jpg" muted loop playsinline preload="auto" aria-hidden="true"></video>
   <div class="hero-shade"></div>
   <div class="hero-text">
-    <p class="eyebrow">Motion designer · Video editor · 3D artist</p>
-    <h1>Nikita Budnevich</h1>
-    <p class="lead">I build cinematic worlds in real time: music videos, game cinematics and 3D animation.</p>
-    <a class="btn" href="#work">See the work</a>
+    <p class="role-line">Motion designer, video editor and 3D artist</p>
+    <h1><span>Nikita</span> <span>Budnevich</span></h1>
+    <p class="lead">Music videos, real-time cinematics and broadcast graphics, from the first idea to the final grade.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#contact">Hire me</a>
+      <a class="btn ghost" href="#featured">Watch the work</a>
+    </div>
   </div>
   <button class="loop-toggle" data-for=".hero-video" type="button">Pause loop</button>
 </section>
 
+<section class="featured" id="featured">
+  <h2 class="sec-title">Featured work</h2>
+  <div class="feat-grid">
+    <article class="feat" id="feat-bo">
+      <button class="feat-media" type="button" data-key="badomens" aria-haspopup="dialog" aria-label="Play Bad Omens, Artificial Suicide">
+        <img src="assets/img/bo_poster.jpg" width="1280" height="720" alt="" decoding="async">
+        <video class="pv" muted loop playsinline preload="none" data-src="assets/video/badomens_preview.mp4" aria-hidden="true"></video>
+        <span class="play-big" aria-hidden="true">&#9654;</span>
+        <span class="badge">Unofficial fan video</span>
+      </button>
+      <div class="feat-body">
+        <h3>Bad Omens: ARTIFICIAL SUICIDE</h3>
+        <p class="desc">A night concert in Times Square, built and shot entirely in Unreal Engine 5.7: a city fly-in, a crowd of animated fans, MetaHuman performers and a stage light show cued to the song.</p>
+        <p class="role"><b>Role</b> Direction · Unreal Engine · Cameras · Lighting · Edit</p>
+        <p class="role"><b>Tools</b> Unreal Engine 5.7 · MetaHuman · DaVinci Resolve</p>
+        <div class="stills"><img src="assets/img/sm/bo_360.jpg" srcset="assets/img/sm/bo_360.jpg 720w, assets/img/bo_360.jpg 1440w" sizes="(max-width: 800px) 33vw, 16vw" width="720" height="301" loading="lazy" decoding="async" alt="Times Square wide shot at night"><img src="assets/img/sm/bo_1560.jpg" srcset="assets/img/sm/bo_1560.jpg 720w, assets/img/bo_1560.jpg 1440w" sizes="(max-width: 800px) 33vw, 16vw" width="720" height="301" loading="lazy" decoding="async" alt="Blue light wash over the stage"><img src="assets/img/sm/bo_1800.jpg" srcset="assets/img/sm/bo_1800.jpg 720w, assets/img/bo_1800.jpg 1440w" sizes="(max-width: 800px) 33vw, 16vw" width="720" height="301" loading="lazy" decoding="async" alt="Singer with microphone"></div>
+      </div>
+    </article>
+
+    <article class="feat" id="feat-reel">
+      <button class="feat-media" type="button" data-key="reel" aria-haspopup="dialog" aria-label="Play Broadcast Motion Design Reel">
+        <img src="assets/img/sm/reel_3.jpg" width="720" height="405" alt="" decoding="async">
+        <video class="pv" muted loop playsinline preload="none" data-src="assets/video/reel_preview.mp4" aria-hidden="true"></video>
+        <span class="play-big" aria-hidden="true">&#9654;</span>
+        <span class="badge">60 s reel</span>
+      </button>
+      <div class="feat-body">
+        <h3>Broadcast Motion Design Reel</h3>
+        <p class="desc">TV graphics made at Infomens for 5TV, Izvestia and Telekurier: channel openers, explainer graphics, maps and animated posters.</p>
+        <p class="role"><b>Role</b> Motion Designer · Broadcast Graphics · Operational Motion Graphics Designer</p>
+        <p class="role"><b>Clients</b> 5TV · Izvestia · Telekurier</p>
+        <div class="stills"><img src="assets/img/sm/reel_12.jpg" srcset="assets/img/sm/reel_12.jpg 720w, assets/img/reel_12.jpg 1440w" sizes="(max-width: 800px) 33vw, 16vw" width="720" height="405" loading="lazy" decoding="async" alt="Honeybee macro from a TV explainer"><img src="assets/img/sm/reel_24.jpg" srcset="assets/img/sm/reel_24.jpg 720w, assets/img/reel_24.jpg 1440w" sizes="(max-width: 800px) 33vw, 16vw" width="720" height="405" loading="lazy" decoding="async" alt="Medical statistics graphic"><img src="assets/img/sm/reel_36.jpg" srcset="assets/img/sm/reel_36.jpg 720w, assets/img/reel_36.jpg 1440w" sizes="(max-width: 800px) 33vw, 16vw" width="720" height="405" loading="lazy" decoding="async" alt="Billboard poster animation"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
 <section class="about" id="about">
   <div>
-    <p class="eyebrow">About</p>
     <h2>Hi, I'm Nikita.</h2>
     <p>I've been a freelance motion designer since 2021, after training at MASA Tlalim and working in-house at Agraba in Tel Aviv.
       Now I build music videos and game cinematics in Unreal Engine, animate characters in Blender, and edit and grade in DaVinci Resolve,
@@ -66,79 +106,45 @@
     <p>Based in Petah Tikva, Israel. Available for freelance and full-time work.</p>
   </div>
   <ul class="skills" aria-label="Tools and skills">
-    <li>Unreal Engine 5</li><li>Motion design</li><li>Cinematography</li><li>Blender</li><li>DaVinci Resolve</li><li>AI stylization (ComfyUI)</li>
+    <li>Unreal Engine 5</li><li>Motion design</li><li>Cinematography</li><li>Blender</li><li>DaVinci Resolve</li>
   </ul>
 </section>
 
-<section class="featured" id="work">
-  <div class="featured-head">
-    <p class="eyebrow">Featured · Music video</p>
-    <h2>Bad Omens — Artificial Suicide</h2>
-    <p class="meta">Fan music video · Unreal Engine 5 · 2026 · Direction, camera, lighting, animation, edit</p>
-  </div>
-
-  <div class="player">
-    <!-- Replace with the YouTube embed after the release:
-         <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Bad Omens music video" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe> -->
-    <img src="assets/img/bo_1950.jpg" width="1440" height="602" loading="lazy" decoding="async" alt="Final chorus: fire cannons over the Times Square crowd">
-    <span class="soon">Premiere soon</span>
-  </div>
-
-  <p class="story">A night concert in Times Square, built and shot entirely inside Unreal Engine: a city fly-in, thousands of animated fans,
-    a stage light show cued to the song, and a hand-painted AI finishing pass.</p>
-
-  <div class="gallery">
-    <img src="assets/img/sm/bo_0420.jpg" srcset="assets/img/sm/bo_0420.jpg 720w, assets/img/bo_0420.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="Times Square crowd, wide aerial">
-    <img src="assets/img/sm/bo_1002.jpg" srcset="assets/img/sm/bo_1002.jpg 720w, assets/img/bo_1002.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="The band on stage in red light">
-    <img src="assets/img/sm/bo_0900.jpg" srcset="assets/img/sm/bo_0900.jpg 720w, assets/img/bo_0900.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="Singer close-up with motion blur">
-    <img src="assets/img/sm/bo_1560.jpg" srcset="assets/img/sm/bo_1560.jpg 720w, assets/img/bo_1560.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="Blue light wash over the stage">
-    <img src="assets/img/sm/bo_0560.jpg" srcset="assets/img/sm/bo_0560.jpg 720w, assets/img/bo_0560.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="Masked guitarist">
-    <img src="assets/img/sm/bo_1800.jpg" srcset="assets/img/sm/bo_1800.jpg 720w, assets/img/bo_1800.jpg 1440w" sizes="(max-width: 800px) 50vw, 33vw" width="720" height="301" loading="lazy" decoding="async" alt="The crowd singing along">
-  </div>
-
-  <div class="compare">
-    <figure><img src="assets/img/sm/bo_1002.jpg" srcset="assets/img/sm/bo_1002.jpg 720w, assets/img/bo_1002.jpg 1440w" sizes="(max-width: 800px) 100vw, 50vw" width="720" height="301" loading="lazy" decoding="async" alt="Stage frame straight out of Unreal Engine"><figcaption>Unreal render</figcaption></figure>
-    <figure><img src="assets/img/sm/bo_ai_1002.jpg" srcset="assets/img/sm/bo_ai_1002.jpg 720w, assets/img/bo_ai_1002.jpg 1568w" sizes="(max-width: 800px) 100vw, 50vw" width="720" height="309" loading="lazy" decoding="async" alt="Same frame after the painted AI pass"><figcaption>Painted AI pass</figcaption></figure>
-  </div>
-</section>
-
-<section class="featured dragon">
-  <div class="featured-head">
-    <p class="eyebrow">Featured · Game cinematic</p>
-    <h2>Helgnar The Conqueror — Duel of the Dragon Riders</h2>
-    <p class="meta">Cinematic for Helgnar The Conqueror · Unreal Engine 5 · 2025 · Direction, cameras, story</p>
-  </div>
-  <div class="player" id="dragon-player">
-    <!-- Loop and poster load when the player scrolls near (work.js). -->
-    <video class="loop-video lazy-video" data-src="assets/video/dragon_loop.mp4" data-poster="assets/img/dragon_0.58.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-    <button class="watch" data-embed="https://www.youtube-nocookie.com/embed/9kDAbI6SV2Y" aria-haspopup="dialog"><span aria-hidden="true">▶ </span>Watch the cinematic</button>
-    <button class="loop-toggle" data-for="#dragon-player video" type="button">Pause loop</button>
-  </div>
-  <div class="gallery">
-    <img src="assets/img/sm/dragon_0.08.jpg" srcset="assets/img/sm/dragon_0.08.jpg 720w, assets/img/dragon_0.08.jpg 1600w" sizes="(max-width: 640px) 50vw, 33vw" width="720" height="405" loading="lazy" decoding="async" alt="A red dragon lands on a misty beach">
-    <img src="assets/img/sm/dragon_0.48.jpg" srcset="assets/img/sm/dragon_0.48.jpg 720w, assets/img/dragon_0.48.jpg 1600w" sizes="(max-width: 640px) 50vw, 33vw" width="720" height="405" loading="lazy" decoding="async" alt="The masked dragon rider">
-    <img src="assets/img/sm/dragon_0.78.jpg" srcset="assets/img/sm/dragon_0.78.jpg 720w, assets/img/dragon_0.78.jpg 1600w" sizes="(max-width: 640px) 100vw, 33vw" width="720" height="405" loading="lazy" decoding="async" alt="Two dragons clash in the fog">
-  </div>
-</section>
-
-<section class="more">
-  <h2>More work</h2>
+<section class="more" id="work">
+  <h2 class="sec-title">More work</h2>
+  <article class="dragon" id="dragon-player">
+    <div class="player">
+      <video class="loop-video lazy-video" data-src="assets/video/dragon_loop.mp4" data-poster="assets/img/dragon_0.58.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+      <button class="watch" data-embed="https://www.youtube-nocookie.com/embed/9kDAbI6SV2Y" aria-haspopup="dialog"><span aria-hidden="true">&#9654; </span>Watch the cinematic</button>
+      <button class="loop-toggle" data-for="#dragon-player video" type="button">Pause loop</button>
+    </div>
+    <div class="dragon-info">
+      <h3>Helgnar The Conqueror: Duel of the Dragon Riders</h3>
+      <p class="desc">Cinematic for the game Helgnar The Conqueror, 2025.</p>
+      <p class="role"><b>Role</b> Direction · Cameras · Story</p>
+      <p class="role"><b>Tools</b> Unreal Engine 5</p>
+    </div>
+  </article>
   <div class="cards" id="cards"></div>
-  <p class="coming">Coming soon: Infomens showreel · Making of Bad Omens</p>
 </section>
 
 <section class="anim" id="animation">
-  <h2>Character animation</h2>
+  <h2 class="sec-title">Character animation</h2>
   <p class="sub"><span class="hover-hint">Hover to preview, click to watch.</span><span class="touch-hint">Tap to watch.</span></p>
   <div class="anim-grid" id="anim"></div>
 </section>
 
 <section class="contact" id="contact">
-  <h2>Let's make something loud.</h2>
+  <h2>Have a project in mind?<br>Let's make it loud.</h2>
+  <p class="contact-sub">Music videos, cinematics, broadcast packages, 3D and character animation. Tell me what you need and when.</p>
+  <a class="btn big" href="mailto:budnevichnik@gmail.com?subject=Project%20inquiry">Email me</a>
   <a class="mail" href="mailto:budnevichnik@gmail.com">budnevichnik@gmail.com</a>
-  <div class="socials">
-    <a href="https://www.youtube.com/@Budnevich" target="_blank" rel="noopener">YouTube<span class="sr-only"> (opens in a new tab)</span></a><a href="https://www.instagram.com/parovoz96/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (opens in a new tab)</span></a><a href="https://www.behance.net/BudnevichNikita" target="_blank" rel="noopener">Behance<span class="sr-only"> (opens in a new tab)</span></a><a href="https://www.linkedin.com/in/budnevich/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
-  </div>
+  <ul class="socials">
+    <li><a href="https://www.behance.net/BudnevichNikita" target="_blank" rel="noopener"><b>Behance</b> behance.net/BudnevichNikita<span class="sr-only"> (opens in a new tab)</span></a></li>
+    <li><a href="https://www.linkedin.com/in/budnevich" target="_blank" rel="noopener"><b>LinkedIn</b> linkedin.com/in/budnevich<span class="sr-only"> (opens in a new tab)</span></a></li>
+    <li><a href="https://www.instagram.com/budnevich_nik" target="_blank" rel="noopener"><b>Instagram</b> instagram.com/budnevich_nik<span class="sr-only"> (opens in a new tab)</span></a></li>
+    <li><a href="https://www.youtube.com/@Budnevich" target="_blank" rel="noopener"><b>YouTube</b> youtube.com/@Budnevich<span class="sr-only"> (opens in a new tab)</span></a></li>
+  </ul>
 </section>
 </main>
 

@@ -2,3 +2,6 @@ _source/
 *.bak
 .DS_Store
 Thumbs.db
+_review/
+CLAUDE.md
+TODO.md
